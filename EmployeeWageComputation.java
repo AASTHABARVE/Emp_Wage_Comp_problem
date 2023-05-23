@@ -2,6 +2,13 @@ package com.b.Employee_Wage_Com_Problem;
 
 import javax.swing.*;
 
+interface IEmployeeWageComputation
+{
+    public void addCompany(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHrs);
+
+    public void calculateTotalWage();
+}
+
 class CompanyEmpWage
 {
     // instance constants
@@ -26,6 +33,7 @@ class CompanyEmpWage
         this.totalEmpWage = totalEmpWage;
     }
 
+    @Override
     public String toString()
     {
         System.out.println("Details of " + COMPANY_NAME + " employee");
@@ -37,7 +45,7 @@ class CompanyEmpWage
     }
 }
 
-public class EmployeeWageComputation
+class EmployeeWageComputation implements IEmployeeWageComputation
 {
     // class constants
     public static final int PART_TIME = 1;
@@ -53,7 +61,7 @@ public class EmployeeWageComputation
         index = 0;
     }
 
-    void addCompany(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHrs)
+    public void addCompany(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHrs)
     {
         companies[index++] = new CompanyEmpWage(companyName, wagePerHr, maxWorkingDays, maxWorkingHrs);
     }
@@ -76,7 +84,7 @@ public class EmployeeWageComputation
         }
     }
 
-    void calculateTotalWage()
+    public void calculateTotalWage()
     {
         for (CompanyEmpWage company : companies)
         {
