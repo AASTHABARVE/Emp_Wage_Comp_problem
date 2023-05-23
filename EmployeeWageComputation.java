@@ -1,76 +1,29 @@
 package com.b.Employee_Wage_Com_Problem;
 
-import javax.swing.*;
-
-public class EmployeeWageComputation{
-    public static void main(String args[]) {
-        System.out.println("  Welcome to employee wage  ");
-
-    }
-
+public class EmployeeWageComputation
+{
+    public static void main(String[] args)
     {
-        int IS_FULL_TIME = 1;
-        double empCheck = Math.floor(Math.random() * 10) % 2;
-        if (empCheck == IS_FULL_TIME)
-            System.out.println("Emp is present");
-        else System.out.println("Emp is Absent");
-    }
+        final int PART_TIME = 1;
+        final int FULL_TIME = 2;
+        final int WAGE_PER_HR = 20;
+        final int WORKING_DAYS = 20;
 
-    {
-        int IS_FULL_TIME = 1;
-        int EMP_RATE_PER_HOUR = 20;
-        int empHrs = 0;
-        int empWage = 0;
-        double empCheck = Math.floor(Math.random() * 10) % 2;
-        if (empCheck == IS_FULL_TIME)
-            empHrs = 8;
-        else
-            empHrs = 0;
-        empWage = empHrs * EMP_RATE_PER_HOUR;
-        System.out.println("Emp Wage: " + empWage);
-
-    }
-
-    {
-        int IS_PART_TIME = 1;
-        int IS_FULL_TIME = 2;
-        int EMP_RATE_PER_HOUR = 20;
-        int empHrs = 0;
-        int empWage = 0;
-        double empCheck = Math.floor(Math.random() * 10) % 3;
-        if (empCheck == IS_FULL_TIME)
-            empHrs = 4;
-        else if (empCheck == IS_FULL_TIME)
-            empHrs = 8;
-        else
-            empHrs = 0;
-        empWage = empHrs * EMP_RATE_PER_HOUR;
-        System.out.println("Emp wage: " + empWage);
-    }
-
-
-    {
-        final int IS_PART_TIME = 1;
-        final int IS_FULL_TIME = 2;
-        final int EMP_RATE_PER_HOUR = 20;
-
-        int empHrs = 0;
-        int empWage = 0;
-        int empCheck = (int) Math.floor(Math.random() * 10) % 3;
-        switch (empCheck) {
-            case IS_PART_TIME:
-                empHrs = 4;
-                break;
-            case IS_FULL_TIME:
-                empHrs = 8;
-                break;
-            default:
-                empHrs = 0;
-
-                empWage = empHrs * EMP_RATE_PER_HOUR;
-                System.out.println("Emp Wage: + empWage ");
-                System.out.println("Emp Wage: " + empWage);
-
+        int totalWage = 0;
+        for (int day = 1; day <= WORKING_DAYS; day++)
+        {
+            int empType = (int) (Math.random() * 100) % 3;
+            int workingHours =0;
+            switch (empType) {
+                case FULL_TIME -> workingHours = 8;
+                case PART_TIME -> workingHours = 4;
+                default -> {
+                }
+            }
+            int wage = workingHours * WAGE_PER_HR;
+            System.out.println("Day " + day + " wage is:" + wage);
+            totalWage += wage;
         }
+        System.out.println("Total wage for a month is " + totalWage);
     }
-    }
+}
